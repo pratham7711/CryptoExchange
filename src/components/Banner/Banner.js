@@ -11,7 +11,7 @@ const Banner = () => {
       <Container className = {classes.bannerContent} sx={{height:"400"}}>
         <div className={classes.tagline}>
           <Typography variant='h2' sx={{fontWeight:"bold" , marginBottom : '15px', fontFamily:"Montserrat"}}>
-            Crypto Exchange
+            Coin<span style={{color:'orange'}}>Hub</span>
           </Typography>
           <Typography variant='subtitle2' sx={{color : "darkgray" , textTransform : "capitalize" , fontFamily:"Montserrat"}}>
             Practise trading with your fav crypto currencies

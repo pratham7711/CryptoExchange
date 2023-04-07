@@ -59,12 +59,13 @@ const CoinsTable = () => {
           variant="outlined"
           sx={{ marginBottom: "20px", width: "100%" }}
           onChange={(e) => {
-            if(e.target.value === "")
-            {
-                window.location.reload(false);
-            }
-            setSearch(e.target.value);
+            // if(e.target.value === "")
+            // {
+            //     window.location.reload(false);
+            // }
             setPage(1);
+            // console.log(page);
+            setSearch(e.target.value);
           }}
         />
 

@@ -12,6 +12,7 @@ import {HiTrendingUp} from 'react-icons/hi';
 import {AiOutlineOrderedList} from 'react-icons/ai';
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 export default function SideBar() {
   const [state, setState] = React.useState({
@@ -95,11 +96,12 @@ const logout =()=>
           marginTop: "1rem",
         }}
       >
+        <Link to="/portfolio">
           <p className={classes.navLinks} style={{ margin: "1rem" , color: 'green' , fontWeight :'bold' }}>
             <HiTrendingUp size={30} color = 'green' className={classes.icon} />
             Portfolio
           </p>
-
+          </Link>
             <p className={classes.navLinks} style={{ margin: "1rem" }}>
               <span className={classes.icon}>
             <AiOutlineOrderedList size={24}/>

@@ -3,14 +3,16 @@ import { Box } from '@mui/system';
 import React, { useState } from 'react'
 import { CryptoState } from '../../store/CryptoContext';
 import {createUserWithEmailAndPassword} from '@firebase/auth';
-import {auth} from "../../firebase";
+import {auth, db} from "../../firebase";
+import { addDoc, collection } from 'firebase/firestore';
+import { defaultPortfolio } from '../../config/api';
 
 const SignUp = ({handleClose}) => {
   const [email, setEmail] = useState("");
   const [password , setPassowrd] = useState("");
   const [confirm , setConfirm] = useState("");
 
-  const {setAlert} = CryptoState();
+  const {setAlert,exchange} = CryptoState();
 
   const handleSubmit = async()=>
   {
@@ -33,8 +35,6 @@ const SignUp = ({handleClose}) => {
           message : `Sign Up Successfull. Welcome ${result.user.email}`,
           type:"success",
         });
-
-        handleClose();
       }catch(error)
       {
         setAlert({
@@ -43,6 +43,8 @@ const SignUp = ({handleClose}) => {
           type: "error",
         });
       }
+      
+      handleClose();
   }
   return (
     <Box p={3}

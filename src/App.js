@@ -6,6 +6,7 @@ import classes from './App.module.css';
 import React from 'react';
 import { StyledEngineProvider } from '@mui/material';
 import Alert from './components/Alert';
+import PortfolioPage from './pages/PortfolioPage';
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
     <Routes>
     <Route path='/' element={<Navigate replace to='/homepage'/>}/>
     <Route path='/homepage' element = {<HomePage/>}/>
-      <Route path='/coins/:id' element = {<CoinPage/> }/>
+    <Route path='/coins/:id' element = {<CoinPage/> }/>
+    <Route path='/portfolio' element={<PortfolioPage/>}/>
     </Routes>
   </div>
   <Alert></Alert>

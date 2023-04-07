@@ -10,24 +10,31 @@ import classes from "./CoinPage.module.css";
 import ReactHtmlParser from "react-html-parser";
 import { db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
+import Buy from "../components/transaction/Buy";
+import Sell from "../components/transaction/Sell";
+
 
 const CoinPage = () => {
   const { id } = useParams();
   const [coin, setCoin] = useState();
-  const { currency, symbol, user, watchlist, setAlert } = CryptoState();
+  const { currency, symbol, user, watchlist, setAlert , portfolio } = CryptoState();
+
 
   const fetchCoin = async () => {
     const { data } = await axios.get(SingleCoin(id));
-
     setCoin(data);
   };
 
+  // console.log(coin);
+    const sellhandler =()=>{}
+
+
   const inWatchlist = watchlist.includes(id);
-  console.log(inWatchlist);
+  // console.log(inWatchlist);
 
   const addToWatchList = async () => {
     const coinRef = doc(db, "watchlist", user.uid);
-    console.log(coinRef);
+    console.log("hi",coinRef);
     try {
       await setDoc(
         coinRef,
@@ -145,7 +152,7 @@ const CoinPage = () => {
             </Typography>
           </span>
           {user && (
-            <div>
+            <div className={classes.button}>
               <Button
                 variant="outlined"
                 onClick={inWatchlist ? removeFromWatchList : addToWatchList}
@@ -158,32 +165,10 @@ const CoinPage = () => {
               >
                 {inWatchlist ? "Remove from watchlist" : "Add to Watchlist"}
               </Button>
-              <>
-                <Button
-                  variant="outlined"
-                  style={{
-                    width: "50%",
-                    height: 40,
-                    marginTop: 20,
-                    backgroundColor: "green",
-                    color: "aliceblue",
-                  }}
-                >
-                  Buy
-                </Button>
-                <Button
-                  variant="outlined"
-                  style={{
-                    width: "50%",
-                    height: 40,
-                    marginTop: 20,
-                    backgroundColor: "red",
-                    color: "aliceblue",
-                  }}
-                >
-                  Sell
-                </Button>
-              </>
+              <div style={{display: 'flex', width:'100%' }}>
+               <Buy coin={coin} />
+               <Sell coin ={coin}/>
+              </div>
             </div>
           )}
         </div>

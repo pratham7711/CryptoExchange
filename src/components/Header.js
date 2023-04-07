@@ -1,4 +1,4 @@
-import { AppBar, Button, MenuItem, Select, Toolbar, Typography } from "@mui/material";
+import { AppBar, MenuItem, Select, Toolbar, Typography } from "@mui/material";
 import { ThemeProvider, createTheme} from "@mui/material/styles";
 import { Container } from "@mui/system";
 import React from "react";
@@ -23,7 +23,7 @@ const title = {
 
 const Header = () => {
 
-  const {currency , setcurrency , user} = CryptoState();
+  const {currency , setcurrency , user , portfolio} = CryptoState();
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -32,10 +32,10 @@ const Header = () => {
           <Toolbar  sx={{display: 'flex' , justifyContent : 'space-between' }} >
             <Link to="/homepage">
               <Typography sx={title} variant="h6">
-                Crypto Exchange
+                Coin<span style={{color:'orange'}}>Hub</span>
               </Typography>
             </Link>
-
+            <div style={{display:'flex' , height:'100%' , width:'30%' , justifyContent:'space-around' }}>
             <Select
               variant="outlined"
               sx={{ width: 100, height: 40}}
@@ -46,6 +46,7 @@ const Header = () => {
               <MenuItem value={"INR"}>INR</MenuItem>
             </Select>
             {user ? <SideBar></SideBar>:<AuthModal />}
+            </div>
           </Toolbar>
         </Container>
       </AppBar>

@@ -37,6 +37,7 @@
     text-align: justify;
 }
 
+
 @media screen and (max-width: 900px) {
     .container{
         flex-direction: column;
@@ -45,6 +46,11 @@
 
     .sidebar{
         width: 100%;
+    }
+
+    
+    .button{
+        width: 50%;
     }
 
     .marketData{
@@ -58,5 +64,9 @@
 {   
     .marketData{
         align-items: flex-start;
+    }
+
+    .button{
+        width: 100%;
     }
 }

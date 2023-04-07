@@ -1,7 +1,6 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-// import Typography from '@mui/material/Typography';
 import Modal from "@mui/material/Modal";
 import { AppBar, Tab, Tabs } from "@mui/material";
 import SignUp from "./SignUp";
@@ -11,6 +10,7 @@ import classes from "./SideBar.module.css";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 import { CryptoState } from "../../store/CryptoContext";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -96,7 +96,6 @@ export default function AuthModal() {
             <SignUp handleClose={handleClose} />
           )}
           <Box className={classes.google}>
-            <span>OR</span>
             <GoogleButton
               style={{ width: "100%", outline: "none" }}
               onClick={signInWithGoogle}
