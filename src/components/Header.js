@@ -23,8 +23,7 @@ const title = {
 
 const Header = () => {
 
-  const {currency , setcurrency , user , portfolio} = CryptoState();
-
+  const {currency ,symbol, setcurrency , user , portfolio} = CryptoState();
   return (
     <ThemeProvider theme={darkTheme}>
       <AppBar color="transparent" position="static">
@@ -35,7 +34,7 @@ const Header = () => {
                 Coin<span style={{color:'orange'}}>Hub</span>
               </Typography>
             </Link>
-            <div style={{display:'flex' , height:'100%' , width:'30%' , justifyContent:'space-around' }}>
+            <div style={{display:'flex' ,alignItems: 'center', height:'100%' , width:'30%' , justifyContent:'space-around' }}>
             <Select
               variant="outlined"
               sx={{ width: 100, height: 40}}
@@ -45,7 +44,8 @@ const Header = () => {
               <MenuItem value={"USD"}>USD</MenuItem>
               <MenuItem value={"INR"}>INR</MenuItem>
             </Select>
-            {user ? <SideBar></SideBar>:<AuthModal />}
+           {(Object.keys(portfolio).length !== 0) && <Typography> {symbol} {" "}{ portfolio.bal[currency.toLowerCase()].toFixed(2)}</Typography>}
+           {user ? <SideBar></SideBar>:<AuthModal />}
             </div>
           </Toolbar>
         </Container>
